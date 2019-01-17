@@ -1,0 +1,121 @@
+<head>
+	<meta charset="utf-8"/>
+	<title>카카오 맵 테스트</title>
+</head>
+<body>
+	<div id="map" style="width:100%;height:50%;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=201dc389adbc40a036938debef798ede"></script>
+    <p>
+        <button onclick="hideMarkers()">마커 감추기</button>
+        <button onclick="showMarkers()">마커 보이기</button>
+    </p>
+	<script>
+        var imageSrc = 'https://blogfiles.pstatic.net/MjAxOTAxMTdfMTQ1/MDAxNTQ3NzI1ODE5Mjk4.uECjCFbxceTrFLIoIa5-CLHQ_ulKZldMWDBO3WkrBpYg.8JUPAjjNT8fAmQmayswLGo5pligQUY36kho4OMwi7JMg.PNG.ganesyu/3color.png'
+        var imageSize = new daum.maps.Size(696, 564)
+		var mapContainer = document.getElementById('map');
+		var mapOptions = {
+			center: new daum.maps.LatLng(33.3616658, 126.5204118),
+			level: 9
+		};
+
+
+		var map = new daum.maps.Map(mapContainer, mapOptions);
+        daum.maps.event.addListener(map, 'click', function(mouseEvent){
+            addMarker(mouseEvent.latLng);
+        });
+        var plasticPositions = [new daum.maps.LatLng(33.5165513,126.5484049), new daum.maps.LatLng(33.4104915,126.5449035)];
+        var canPositions = [new daum.maps.LatLng(33.5085601,126.5210967), new daum.maps.LatLng(33.3750227,126.5738082)];
+        var normalPositions = [new daum.maps.LatLng(33.4599802,126.5509878), new daum.maps.LatLng(33.3385978,126.6225405)];
+        var markers = [];
+        var plasticMarkers = [],
+            canMarkers = [],
+            normalMarkers = [];
+        function createMarkerImage(src, size, options) {
+            var markerImage = new daum.maps.MarkerImage(src, size, options);
+            return markerImage;
+        }
+        function setplasticMarkers(map){
+            for (var i =0; i<plasticMarkers.length; i = i+1){
+                plasticMarkers[i].setMap(map);
+            }
+        }
+        function setcanMarkers(map){
+            for (var i =0; i<canMarkers.length; i = i+1){
+                canMarkers[i].setMap(map);
+            }
+        }
+        function setnormalMarkers(map){
+            for (var i =0; i<normalMarkers.length; i = i+1){
+                normalMarkers[i].setMap(map);
+            }
+        }
+        createplasticMarkers();
+        createcanMarkers();
+        createnormalMarkers();
+        function createMarker(position, image){
+            var marker = new daum.maps.Marker({
+                position: position,
+                image: image
+            });
+            return marker;
+        }
+        function createplasticMarkers() {
+            for(var i = 0; i<plasticPositions.length; i = i+1){
+                var imageSize = new daum.maps.Size(22,26),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(110, 176),
+                        spriteSize: new daum.maps.Size(696,564)
+                    };
+                var markerImage = createMarkerImage(imageSrc , imageSize, imageOptions),
+                    marker = createMarker(plasticPositions[i], markerImage);
+                plasticMarkers.push(marker);
+            }
+        }
+        function createcanMarkers() {
+            for(var i = 0; i<canPositions.length; i = i+1){
+                var imageSize = new daum.maps.Size(22,26),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(319,373),
+                        spriteSize: new daum.maps.Size(696,564)
+                    };
+                var markerImage = createMarkerImage(imageSrc , imageSize, imageOptions),
+                    marker = createMarker(canPositions[i], markerImage);
+                canMarkers.push(marker);
+            }
+        }
+        function createnormalMarkers() {
+            for(var i = 0; i<normalPositions.length; i = i+1){
+                var imageSize = new daum.maps.Size(22,26),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(541,378),
+                        spriteSize: new daum.maps.Size(696,564)
+                    };
+                var markerImage = createMarkerImage(imageSrc , imageSize, imageOptions),
+                    marker = createMarker(normalPositions[i], markerImage);
+                normalMarkers.push(marker);
+            }
+        }
+
+
+        addMarker(new daum.maps.LatLng(33.450701, 126.570667));
+        function addMarker(position) {
+            var marker = new daum.maps.Marker({
+                position: position
+            });
+            marker.setMap(map);
+            markers.push(marker);
+        }
+        function showMarkers() {
+            setMarkers(map);
+        }
+        function hideMarkers() {
+            setMarkers(null);
+        }
+        createplasticMarkers();
+        createcanMarkers();
+        createnormalMarkers();
+        setplasticMarkers(map);
+        setcanMarkers(map);
+        setnormalMarkers(map);
+	</script>
+</body>

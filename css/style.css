@@ -1,0 +1,15 @@
+/* .index-header{
+  background-image: url("../img/home-bg.jpg");
+  background-position: center;
+  background-size: auto;
+} */
+
+.menubar {
+  display: flex;
+}
+.navbar-collapse {
+  flex-grow: 0!important;
+}
+.navbar>.container {
+  justify-content: space-around;
+}
