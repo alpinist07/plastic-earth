@@ -10,7 +10,13 @@
 
     <title>플라스틱 지구</title>
 
-    <!-- Bootstrap core CSS -->
+<!-- JavaScript -->
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services,clusterer,drawing"></script>
+    <script type="text/javascript" src="js/myfunction.js"></script>
+
+<!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
@@ -24,12 +30,6 @@
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- JavaScript -->
-    <script type="text/javascript" src="js/map.js"></script>
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script>
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services,clusterer,drawing"></script>
-    <script type="text/javascript" src="js/myfunction.js"></script>
 
   </head>
 
@@ -45,7 +45,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-              <form class="form-inline search-form" action="maptest.html">
+              <form class="form-inline search-form" action="marker.html">
                 <input class="form-control mr-sm-2 input-location" type="text" placeholder="살펴보고 싶은 지역"/>
                 <button class="btn btn-primary my-2 my-sm-0 js-scroll-trigger" type="submit"  onclick = "location.href = '#search-result' ">Search
                 </button>
@@ -149,7 +149,7 @@
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
+                  <textarea class="form-control" id="message" rows="2" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>

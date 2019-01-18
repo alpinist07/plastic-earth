@@ -1,0 +1,198 @@
+
+<head>
+	<meta charset="utf-8"/>
+	<title>카카오 맵 테스트</title>
+</head>
+<body>
+	<div id="map" style="width:100%;height:50%;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=201dc389adbc40a036938debef798ede"></script>
+    <p>
+        <button onclick="hideMarkers()">마커 감추기</button>
+        <button onclick="showMarkers()">마커 보이기</button>
+        <button onclick="showplasticMarkers()">플라스틱만</button>
+        <button onclick="showcanMarkers()">캔만</button>
+        <button onclick="shownormalMarkers()">일반만</button>
+        <button onclick="showpaperMarkers()">종이만</button>
+        <button onclick="hidetestMarkers()">보통마커 숨기기</button>
+    </p>
+	<script>
+        var imageSrc = 'https://blogfiles.pstatic.net/MjAxOTAxMThfMjY4/MDAxNTQ3NzkwOTgwNDMx.nYNNFQ8QKdkqlkGvj47QZgdysSMxIxBbFfyQSjXjLq0g.r-GhR_Oi9xRpKYRCYyjIXNQA6RT5MtHFd_EVh48WnXgg.JPEG.ganesyu/2080sprite.jpg'
+        var imageSize = new daum.maps.Size(20, 80)
+		var mapContainer = document.getElementById('map');
+		var mapOptions = {
+			center: new daum.maps.LatLng(33.3616658, 126.5204118),
+			level: 9
+		};
+
+
+		var map = new daum.maps.Map(mapContainer, mapOptions);
+        daum.maps.event.addListener(map, 'click', function(mouseEvent){
+            addMarker(mouseEvent.latLng);
+        });
+        var plasticPositions = [new daum.maps.LatLng(33.5165513,126.5484049), new daum.maps.LatLng(33.4104915,126.5449035), new daum.maps.LatLng(33.507352, 126.538036), new daum.maps.LatLng(33.498356, 126.529156), new daum.maps.LatLng(33.500076, 126.529407), new daum.maps.LatLng(33.502456, 126.525437), new daum.maps.LatLng(33.502492, 126.525716), new daum.maps.LatLng(33.503592, 126.525169), new daum.maps.LatLng(33.503332, 126.524686), new daum.maps.LatLng(33.503448, 126.526080), new daum.maps.LatLng(33.503117, 126.526155), new daum.maps.LatLng(33.502911, 126.526187)];
+        var canPositions = [new daum.maps.LatLng(33.5085601,126.5210967), new daum.maps.LatLng(33.3750227,126.5738082), new daum.maps.LatLng(33.500175, 126.529601), new daum.maps.LatLng(33.500103, 126.529417), new daum.maps.LatLng(33.503395, 126.524686), new daum.maps.LatLng(33.503073, 126.524718)];
+        var normalPositions = [new daum.maps.LatLng(33.4599802,126.5509878), new daum.maps.LatLng(33.3385978,126.6225405), new daum.maps.LatLng(33.500384, 126.529455), new daum.maps.LatLng(33.503502, 126.526048), new daum.maps.LatLng(33.503215, 126.526123)];
+        var paperPositions = [new daum.maps.LatLng(33.342687, 126.182956), new daum.maps.LatLng(33.489415, 126.482855), new daum.maps.LatLng(33.500013, 126.529750), new daum.maps.LatLng(33.503547, 126.524901), new daum.maps.LatLng(33.502858, 126.524664), new daum.maps.LatLng(33.502572, 126.524685), new daum.maps.LatLng(33.502911, 126.526187), new daum.maps.LatLng(33.498804, 126.530360), new daum.maps.LatLng(33.500092, 126.525060)]
+        var markers = [];
+        var plasticMarkers = [],
+            canMarkers = [],
+            normalMarkers = [],
+            paperMarkers = [];
+
+        function createMarkerImage(src, size, options) {
+            var markerImage = new daum.maps.MarkerImage(src, size, options);
+            return markerImage;
+        }
+        function setMarkers(map){
+            for (var i =0; i<markers.length; i=i+1){
+                markers[i].setMap(map);
+            }
+        }
+        function setplasticMarkers(map){
+            for (var i =0; i<plasticMarkers.length; i = i+1){
+                plasticMarkers[i].setMap(map);
+            }
+        }
+        function setcanMarkers(map){
+            for (var i =0; i<canMarkers.length; i = i+1){
+                canMarkers[i].setMap(map);
+            }
+        }
+        function setnormalMarkers(map){
+            for (var i =0; i<normalMarkers.length; i = i+1){
+                normalMarkers[i].setMap(map);
+            }
+        }
+        function setpaperMarkers(map){
+            for (var i =0; i<paperMarkers.length; i = i +1){
+                paperMarkers[i].setMap(map);
+            }
+        }
+        function plusplasticmarker(lat,long){
+            plasticPositions.push(new daum.maps.LatLng(lat,long))
+            createplasticMarkers()
+            setplasticMarkers(map)
+            }
+        function pluscanmarker(lat,long){
+            canPositions.push(new daum.maps.LatLng(lat,long))
+            createcanMarkers()
+            setcanMarkers(map)
+            }
+        function plusnormalmarker(lat,long){
+            normalPositions.push(new daum.maps.LatLng(lat,long))
+            createnormalMarkers()
+            setnormalMarkers(map)
+            }
+        function pluspapermarker(lat,long){
+            paperPositions.push(new daum.maps.LatLng(lat,long))
+            createpaperMarkers()
+            setpaperMarkers(map)
+        }
+        function createMarker(position, image){
+            var marker = new daum.maps.Marker({
+                position: position,
+                image: image
+            });
+            return marker;
+        }
+        function createplasticMarkers() {
+            for(var i = 0; i<plasticPositions.length; i = i+1){
+                var imageSize = new daum.maps.Size(20, 20),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(0, 20),
+                        spriteSize: new daum.maps.Size(20,80)
+                    };
+                var markerImage = createMarkerImage(imageSrc , imageSize, imageOptions),
+                    marker = createMarker(plasticPositions[i], markerImage);
+                plasticMarkers.push(marker);
+            }
+        }
+        function createcanMarkers() {
+            for(var i = 0; i<canPositions.length; i = i+1){
+                var imageSize = new daum.maps.Size(20,20),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(0,0),
+                        spriteSize: new daum.maps.Size(20,80)
+                    };
+                var markerImage = createMarkerImage(imageSrc , imageSize, imageOptions),
+                    marker = createMarker(canPositions[i], markerImage);
+                canMarkers.push(marker);
+            }
+        }
+        function createnormalMarkers() {
+            for(var i = 0; i<normalPositions.length; i = i+1){
+                var imageSize = new daum.maps.Size(20,20),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(0,40),
+                        spriteSize: new daum.maps.Size(20,80)
+                    };
+                var markerImage = createMarkerImage(imageSrc , imageSize, imageOptions),
+                    marker = createMarker(normalPositions[i], markerImage);
+                normalMarkers.push(marker);
+            }
+        }
+        function createpaperMarkers() {
+            for(var i=0; i<paperPositions.length; i=i+1){
+                var imageSize = new daum.maps.Size(20,20),
+                    imageOptions = {
+                        spriteOrigin: new daum.maps.Point(0,60),
+                        spriteSize: new daum.maps.Size(20,80)
+                    };
+                var markerImage = createMarkerImage(imageSrc, imageSize, imageOptions),
+                    marker = createMarker(paperPositions[i], markerImage);
+                paperMarkers.push(marker);
+            }
+        }
+
+
+        addMarker(new daum.maps.LatLng(33.450701, 126.570667));
+        function addMarker(position) {
+            var marker = new daum.maps.Marker({
+                position: position
+            });
+            marker.setMap(map);
+            markers.push(marker);
+        }
+        function showMarkers() {
+            setMarkers(map)
+            setplasticMarkers(map);
+            setcanMarkers(map)
+            setnormalMarkers(map)
+            setpaperMarkers(map)
+        }
+        function hideMarkers() {
+            setMarkers(null)
+            setplasticMarkers(null);
+            setcanMarkers(null)
+            setnormalMarkers(null)
+            setpaperMarkers(null)
+        }
+        function showplasticMarkers(){
+            setplasticMarkers(map)
+        }
+        function showcanMarkers(){
+            setcanMarkers(map)
+        }
+        function shownormalMarkers(){
+            setnormalMarkers(map)
+        }
+        function hidetestMarkers(){
+            setMarkers(null)
+        }
+        function showpaperMarkers(){
+            setpaperMarkers(map)
+        }
+        plusplasticmarker(33.504171, 126.772078)
+        pluscanmarker(33.250215, 126.284517)
+        plusnormalmarker(33.341468, 126.215446)
+        pluspapermarker(33.327992, 126.798323)
+        createplasticMarkers();
+        createcanMarkers();
+        createnormalMarkers();
+        createpaperMarkers();
+        setplasticMarkers(map);
+        setcanMarkers(map);
+        setnormalMarkers(map);
+        setpaperMarkers(map);
+	</script>
+</body>
