@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Plastic Earth</title>
+    <title>플라스틱 지구</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,8 +26,10 @@
 
     <!-- mystyles, JavaScript -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="/js/map.js">
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script>
+    <!-- <script src="js/map.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script> -->
+    <script src="js/myfunction.js"></script>
+
   </head>
 
   <body id="page-top">
@@ -64,91 +66,33 @@
     <!-- Header -->
     <header class="bg-primary masthead text-white text-center" id='headerpage'>
       <div class="container">
-        <h1 class="text-uppercase mb-0">Let's pick up the trash<br>for earth</h1>
+        <h1 class="text-uppercase mb-0">Let's pick up the trash<br>for the earth</h1>
       </div>
     </header>
 
-    <!-- Search Result -->
-    <section class="search-result" id="search-result">
+    <!-- 검색결과 Section -->
+    <section class="search-result bg-primary text-white mb-0" id="search-result">
       <div class="container">
-        <h2 class="text-center text-uppercase text-secondary mb-0">결과</h2>
-        <hr class="star-dark mb-5">
+        <h2 class="text-center text-uppercase text-white">결과</h2>
+        <hr class="star-light mb-5">
      <!--지도 표시 -->
         <div id="map" style="width:750px;height:350px;"></div>
       </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
-    <section class="portfolio" id="uploadpic">
+    <!-- 사진등록 Section -->
+    <section class="portfolio " id="uploadpic">
       <div class="container">
         <h2 class="text-center text-uppercase text-secondary mb-0">사진등록</h2>
         <hr class="star-dark mb-5">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fas fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fas fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/cake.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fas fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/circus.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fas fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/game.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fas fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/safe.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fas fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/submarine.png" alt="">
-            </a>
-          </div>
+        <input type="file" accept="image/*" onchange="loadFile(event)">
+        <img id="output"/>
+        <!-- <div class="row"> -->
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!--로그인 Section -->
     <section class="bg-primary text-white mb-0" id="login">
       <div class="container">
         <h2 class="text-center text-uppercase text-white">로그인</h2>
