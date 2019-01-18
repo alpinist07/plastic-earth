@@ -23,12 +23,13 @@
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
-
-    <!-- mystyles, JavaScript -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- <script src="js/map.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script> -->
-    <script src="js/myfunction.js"></script>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services,clusterer,drawing"></script>
+    <script type="text/javascript" src="js/myfunction.js"></script>
 
   </head>
 
@@ -44,19 +45,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-              <form class="form-inline">
-              <input class="form-control mr-sm-2" type="text" />
-              <button class="btn btn-primary my-2 my-sm-0 js-scroll-trigger" type="submit"  onclick = "location.href = '#search-result' ">Search
-              </button>
+              <form class="form-inline search-form">
+                <input class="form-control mr-sm-2 input-location" type="text" placeholder="살펴보고 싶은 지역"/>
+                <button class="btn btn-primary my-2 my-sm-0 js-scroll-trigger" type="submit"  onclick = "location.href = '#search-result' ">Search
+                </button>
               </form>
             <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#uploadpic">사진등록</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#login">로그인</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#mypage">MY page</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#signup">가입</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#signup">Sign up</a>
             </li>
           </ul>
         </div>
@@ -92,10 +93,10 @@
       </div>
     </section>
 
-    <!--로그인 Section -->
-    <section class="bg-primary text-white mb-0" id="login">
+    <!--마이페이지 Section -->
+    <section class="bg-primary text-white mb-0" id="mypage">
       <div class="container">
-        <h2 class="text-center text-uppercase text-white">로그인</h2>
+        <h2 class="text-center text-uppercase text-white">My page</h2>
         <hr class="star-light mb-5">
         <div class="row">
           <div class="col-lg-4 ml-auto">
@@ -117,7 +118,7 @@
     <!-- Contact Section -->
     <section id="signup">
       <div class="container">
-        <h2 class="text-center text-uppercase text-secondary mb-0">가입</h2>
+        <h2 class="text-center text-uppercase text-secondary mb-0">Sign up</h2>
         <hr class="star-dark mb-5">
         <div class="row">
           <div class="col-lg-8 mx-auto">
