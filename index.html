@@ -48,7 +48,7 @@
           <ul class="navbar-nav ml-auto">
               <form class="form-inline search-form" action="marker.html">
                 <input class="form-control mr-sm-2 input-location" type="text" placeholder="살펴보고 싶은 지역"/>
-                <button class="btn btn-primary my-2 my-sm-0 js-scroll-trigger" type="submit"  onclick = "location.href = '#search-result' ">Search
+                <button class="btn btn-primary my-2 my-sm-0 js-scroll-trigger" type="submit"  onclick = "location.href = '#search-result'">Search
                 </button>
               </form>
             <li class="nav-item mx-0 mx-lg-1">
@@ -78,15 +78,15 @@
         <h2 class="text-center text-uppercase text-white">결과</h2>
         <hr class="star-light mb-5">
      <!--지도 표시 -->
-     <script type="text/javascript">
-      $(document).ready(function(){
-         $("#marker-map").load("https://alpinist07.github.io/plastic-earth/marker.html")
-        /* id 지정을 통해서도 가능합니다.
-         $("#header").load("header.html #navbar")
-         */
-      });
-</script>
-        <div id="marker-map" style="width:750px;height:350px;">
+         <div id="marker-map"></div>
+         <script type="text/javascript">
+          $(document).ready(function(){
+             $("#marker-map").load("https://alpinist07.github.io/plastic-earth/marker.html")
+            /* id 지정을 통해서도 가능합니다.
+             $("#header").load("header.html #navbar")
+             */
+            });
+          </script>
 
         </div>
       </div>
