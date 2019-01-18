@@ -3,7 +3,7 @@ var loadFile = function(event) {
   output.src = URL.createObjectURL(event.target.files[0]);
 };
 
-Var searchForm = document.querySelector('.search-form');
+var searchForm = document.querySelector('.search-form');
 var inputLocation = document.querySelector('.input-location');
 searchForm.addEventListener('submit', callMap);
 function callMap(e) {
