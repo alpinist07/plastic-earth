@@ -11,6 +11,7 @@
     <title>플라스틱 지구</title>
 
 <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services"></script>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=69ba4f7922a00b618779e6f5ef885459&libraries=services,clusterer,drawing"></script>
@@ -77,7 +78,17 @@
         <h2 class="text-center text-uppercase text-white">결과</h2>
         <hr class="star-light mb-5">
      <!--지도 표시 -->
-        <div id="map" style="width:750px;height:350px;"></div>
+     <script type="text/javascript">
+      $(document).ready(function(){
+         $("#marker-map").load("https://alpinist07.github.io/plastic-earth/marker.html")
+        /* id 지정을 통해서도 가능합니다.
+         $("#header").load("header.html #navbar")
+         */
+      });
+</script>
+        <div id="marker-map" style="width:750px;height:350px;">
+
+        </div>
       </div>
     </section>
 
