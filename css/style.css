@@ -13,3 +13,8 @@
 .navbar>.container {
   justify-content: space-around;
 }
+
+#headerpage .container{
+  width : 100%;
+  height : 600px;
+}
